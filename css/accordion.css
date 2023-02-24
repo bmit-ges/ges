@@ -1,24 +1,26 @@
 .container-accordion {
+  margin: 0 auto;
+  margin-bottom: 50px;
+  max-width: 900px;
+  padding: 10px;
+  border: 5px  solid #212529;
+  border-radius: 15px;
+  
+}
 
-    margin-bottom: 50px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .accordion-header {
-    border-radius: 10px;
-    cursor: pointer!important;
-    text-align: center;
-    background-color: #212529;
-    padding: 10px;
-  }
-  
-  .accordion-body {
-    display: none;
-    padding: 10px;
-  }
-  
-  .container-accordion > div {
-    margin-bottom: 10px;
-  }
+.accordion-header {
+  border-radius: 10px;
+  cursor: pointer!important;
+  text-align: center;
+  background-color: #212529;
+  padding: 10px;
+}
+
+.accordion-body {
+  display: none;
+  padding: 10px;
+}
+
+.container-accordion > div {
+  margin-bottom: 10px;
+}
