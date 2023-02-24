@@ -1,0 +1,51 @@
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    
+  }
+  
+.container-projects {
+    margin-bottom: 50px;
+}
+
+.flip-card-front {
+    border-radius: 10px;
+    background-color: #212529;
+}
+
+.flip-card-back {
+    border-radius: 10px;
+    background-color: #212529;
+    transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-front,
+.flip-card-back {
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 500px;
+    height: 500px;
+    perspective: 1000px;
+    margin: 0 auto;
+  }
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}

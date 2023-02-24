@@ -1,0 +1,273 @@
+/* overall settings*/
+
+body{
+    margin: 0px;
+    background-color: rgb(97, 95, 95);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none; 
+}
+
+/* Navbar*/
+
+.navbar{
+    font-weight: bold;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 5;
+}
+
+
+/*footer*/
+.footer-container{
+   
+    height: 50px;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-text{
+    font-weight: bold;
+    padding-top: 15px;    
+
+}
+/* Welcome */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.circle {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-color: #000000;
+    border-radius: 50%;
+    margin: 0 auto;
+    line-height: 500px;
+    text-align: center;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+}
+  
+.welcome-animation-1 {
+    position: absolute;
+    margin: 0 auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 550px;
+    background-color: #ffffff31;
+    filter: blur(5px);
+    border-radius: 40%;
+    animation-duration: 30s;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+  
+.welcome-animation-2 {
+    position: absolute;
+    margin: 0 auto;
+    z-index: -2;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 550px;
+    background-color: #ffffff31;
+    filter: blur(5px);
+    border-radius: 40%;
+    animation-duration: 30s;
+    animation-name: revers-spin;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg)
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes revers-spin{
+    from{
+        transform:rotate(360deg)
+    }
+    to{
+        transform:rotate(0deg);
+    }
+}
+
+/* content */
+
+.conten-container{
+    margin-top:100px;
+    padding-left:300px;
+    padding-right:300px;
+
+}
+
+/* cv */
+.container-infos{
+    display: inline-block;
+    margin-bottom: 50px;
+    
+}
+
+.myimg{
+    border-radius: 10px;
+    float: left;
+    max-width: 500px;
+    height: auto;
+    margin-right: 50px;
+}
+
+
+/* login */
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-bottom: 100px;
+}
+
+
+.login-container {
+    width: 50%;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
+    height: 450px;
+}
+
+
+
+.login-h2, .contact-h2 {
+    text-align: center;
+    color: #333;
+}
+
+.login-form, .contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.login-label, .contact-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.login-input, .contact-input, .contact-input:focus {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+}
+
+.login-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+/* Contact form */
+.contact-container {
+    width: 50%;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    height: 450px;
+}
+.contact-h2 {
+    text-align: center;
+    color: #333;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-group {
+    margin-bottom: 20px;
+}
+
+.contact-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+}
+
+.contact-textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    font-size: 16px;
+    color: #333;
+    resize: none;
+    height: 120px;
+}
+
+.contact-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #555;
+}
