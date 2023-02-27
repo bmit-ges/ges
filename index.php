@@ -1,3 +1,42 @@
+<?php 
+    session_start();
+    global $login;
+
+    $hash = "ad3c25da8fdf8c03836df78225df357eb2a43a578ad8bb61733deb5005e6a758849ee29a12a5f5f66d6d2675d144b80d2fdc74d436b8fd64f3eec79b5285a966";
+    
+    if(isset($_POST['submit']) && $_POST['username'] != "" && $_POST['password'] != ''){
+
+        if(array_key_exists("password", $_POST) && array_key_exists("username",$_POST)){
+            $usernameCkeck = "Admin";
+            $passwordCheck = hash('sha512', $_POST["password"]);
+            if ($usernameCkeck == $_POST["username"] && $passwordCheck == $hash){
+                $login = true; 
+            } else { echo'<script  type="text/javascript" language="javascript"> alert("Anmeldung fehlgeschlagen!")</script>';
+
+                $login = false;
+            }
+        }        
+    } 
+
+    if($login == true){
+        header("HTTP/1.1 301 Moved Permanently");
+        header("Location: zertifikate_login.php");
+        header("Connection: close");
+    } 
+?>
+
+        
+<?php
+    if(isset($_POST["submitK"])){
+    mail("sibylle.gehring@hotmail.com", "kontaktformular",' Name: '.$_POST["name"]. ' Email: '.$_POST["email"].' Nachricht: '.$_POST["nachricht"]);
+    ?>
+    <script type="text/javascript" language="Javascript"> 
+        alert("Erfolgreich gesendet")
+    </script> 
+    <?php 
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +62,7 @@
     <link rel="stylesheet" href="css/contactform.css">
     <link rel="stylesheet" href="css/certificate.css">
     <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/welcombanner.css">
     <link rel="stylesheet" href="css/style.css">
 
     <script type="text/javascript" scr="/js/accordion.js"></script>
@@ -34,38 +74,31 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">About Me</a>
+                    <a class="nav-link" href="#aboutme">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Lebenslauf</a>
+                    <a class="nav-link" href="#cv">Lebenslauf</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Projekte</a>
+                    <a class="nav-link" href="#projects">Projekte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Zertifikate</a>
+                    <a class="nav-link" href="#form">Zertifikate</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kontakt</a>
+                    <a class="nav-link" href="#form">Kontakt</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-
-
     <content>
         <div class="conten-container">
             <div class="welcome-container">
-                <div class="banner-text">
-                    <h1>Welcome!</h1>
-                    <p>We're glad you're here.</p>
-                </div>
-                <div class="banner-illustration">
-                    <img src="https://via.placeholder.com/400x400" alt="Illustration">
+                <div class="box">
+                    <div class="typing-effect" id="aboutme">Welcome</div>
                 </div>
             </div>
-
             <div class="container-infos">
 
                 <img class="myimg" src="img/profilbild.jpg" alt="profilbild">
@@ -77,8 +110,7 @@
 
                 </ul>
 
-                <p>
-
+                <p >
                     Geboren und aufgewachsen bin ich in der Stadt Zürich, gemeinsam mit meinen
                     Eltern und meinem älteren Bruder. Schon früh habe ich Interesse an Technologie gezeigt.
                     Vor allem mein Vater hat mir dabei sehr vieles gezeigt und erklärt.
@@ -91,8 +123,8 @@
                     nachdem ein Problem gelöst wurde die Person, die Hilfe gesucht hat, zufrieden
                     und glücklich zu sehen.
                 </p>
+                <div id="cv"></div>
             </div>
-
             <div class="container-accordion">
                 <div>
                     <h2 class="accordion-header">
@@ -150,24 +182,26 @@
                         Neben den normalen Schulfächern besuchte ich ebenfalls den Informatikunterricht, Theater, bildnerisches Gestalten und dreidimensionales Gestalten als Unterrichtsfächer
                     </p>
                 </div>
-                <div>
+                <div >
                     <h2 class="accordion-header">
                         2010 - 2013
                     </h2>
-                    <p class="accordion-body">
+                    <p class="accordion-body" >
                         Während den drei Jahren Sekundarschule besuchte ich in Albisrieden das Schulhaus Letzi auf Sekundarniveau A mit der Einstufung 1 in Mathematik und 2 in Französisch.
                     </p>
                 </div>
+                <div id="projects"></div>
             </div>
             <div class="projects-container">
                 <div class="container-projects">
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <p>Front content goes here</p>
+                                <h2>Python</h2>
+                                <img src="img/Discordbot.png" alt="Discord Bot" width="460" height="autp" >
                             </div>
                             <div class="flip-card-back">
-                                <p> Back content goes here</p>
+                                <a href="https://github.com/ssiissii100/discordBot.git"> Git Repository</a>
                             </div>
                         </div>
                     </div>
@@ -177,10 +211,11 @@
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <p> Front content goes here</p>
+                                <h2>C#</h2>
+                                <img src="img/Sibago.png" alt="Csharp Game" width="460" height="auto" >
                             </div>
                             <div class="flip-card-back">
-                                <p> Back content goes here</p>
+                                <a href="https://github.com/bmit-ges/Projekte/tree/master/C%23/sibago"> Git Repository</a>
                             </div>
                         </div>
                     </div>
@@ -190,18 +225,18 @@
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <p> Front content goes here</p>
+                                <h2>React</h2>
+                                <img src="img/Animalquiz.png" alt="Animal Quiz" width="460" height="auto" >
                             </div>
                             <div class="flip-card-back">
-                                <p> Back content goes here</p>
+                                <a href="https://github.com/ssiissii100/AnimalQuiz"> Git Repository</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div id="form" ></div>
             </div>
-
-            <div class="form-container">
+            <div class="form-container" >
                 <div class="login-container">
                     <h2 class="login-h2">Login</h2>
                     <form class="login-form">
