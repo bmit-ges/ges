@@ -4,7 +4,7 @@
 
     $hash = "ad3c25da8fdf8c03836df78225df357eb2a43a578ad8bb61733deb5005e6a758849ee29a12a5f5f66d6d2675d144b80d2fdc74d436b8fd64f3eec79b5285a966";
     
-    if(isset($_POST['submit']) && $_POST['username'] != "" && $_POST['password'] != ''){
+    if(isset($_POST['submit-login']) && $_POST['username'] != "" && $_POST['password'] != ''){
 
         if(array_key_exists("password", $_POST) && array_key_exists("username",$_POST)){
             $usernameCkeck = "Admin";
@@ -27,8 +27,8 @@
 
         
 <?php
-    if(isset($_POST["submitK"])){
-    mail("sibylle.gehring@hotmail.com", "kontaktformular",' Name: '.$_POST["name"]. ' Email: '.$_POST["email"].' Nachricht: '.$_POST["nachricht"]);
+    if(isset($_POST["submit-contact"])){
+    mail("sibylle.gehring@hotmail.com", "contact-form",' Name: '.$_POST["name"]. ' Email: '.$_POST["email"].' Nachricht: '.$_POST["message"]);
     ?>
     <script type="text/javascript" language="Javascript"> 
         alert("Erfolgreich gesendet")
@@ -250,7 +250,7 @@
                             <br>
                             <input class="login-input" type="password" id="password" name="password" required>
                         </div>
-                        <button class="login-button" type="submit">Login</button>
+                        <button class="login-button" type="submit" name="submit-login" id="submit-login">Login</button>
                     </form>
                 </div>
 
@@ -272,7 +272,7 @@
                             <br>
                             <textarea class="contact-input" id="message" name="message" required></textarea>
                         </div>
-                        <button class="contact-button" type="submit">Send</button>
+                        <button class="contact-button" type="submit" name="submit-contact" id="submit-contact">Send</button>
                     </form>
                 </div>
             </div>
