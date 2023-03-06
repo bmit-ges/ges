@@ -1,5 +1,4 @@
 <?php
-    /*
   global $login;
 
   session_start();
@@ -9,7 +8,7 @@
     header("Location: index.php");
     header("Connection: close");
   }
-
+  /*
   if(isset($_POST['logout'])){
     header("HTTP/1.1 301 Moved Permanently");
     header("Location: index.php");

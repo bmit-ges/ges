@@ -1,42 +1,3 @@
-<?php 
-    session_start();
-    global $login;
-
-    $hash = "ad3c25da8fdf8c03836df78225df357eb2a43a578ad8bb61733deb5005e6a758849ee29a12a5f5f66d6d2675d144b80d2fdc74d436b8fd64f3eec79b5285a966";
-    
-    if(isset($_POST['submit-login']) && $_POST['username'] != "" && $_POST['password'] != ''){
-
-        if(array_key_exists("password", $_POST) && array_key_exists("username",$_POST)){
-            $usernameCkeck = "Admin";
-            $passwordCheck = hash('sha512', $_POST["password"]);
-            if ($usernameCkeck == $_POST["username"] && $passwordCheck == $hash){
-                $login = true; 
-            } else { echo'<script  type="text/javascript" language="javascript"> alert("Anmeldung fehlgeschlagen!")</script>';
-
-                $login = false;
-            }
-        }        
-    } 
-
-    if($login == true){
-        header("HTTP/1.1 301 Moved Permanently");
-        header("Location: zertifikate_login.php");
-        header("Connection: close");
-    } 
-?>
-
-        
-<?php
-    if(isset($_POST["submit-contact"])){
-    mail("sibylle.gehring@hotmail.com", "contact-form",' Name: '.$_POST["name"]. ' Email: '.$_POST["email"].' Nachricht: '.$_POST["message"]);
-    ?>
-    <script type="text/javascript" language="Javascript"> 
-        alert("Erfolgreich gesendet")
-    </script> 
-    <?php 
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -182,7 +143,7 @@
                         Neben den normalen Schulfächern besuchte ich ebenfalls den Informatikunterricht, Theater, bildnerisches Gestalten und dreidimensionales Gestalten als Unterrichtsfächer
                     </p>
                 </div>
-                <div >
+                <div>
                     <h2 class="accordion-header">
                         2010 - 2013
                     </h2>
@@ -237,26 +198,36 @@
                 <div id="form" ></div>
             </div>
             <div class="form-container" >
-                <div class="login-container">
+                <div class="login-container" >
+                    
                     <h2 class="login-h2">Login</h2>
-                    <form class="login-form">
+                    <?php
+                        if (isset($_GET['login'])) {
+                            if ($_GET['login'] === 'success') {
+                                echo "<p>Login successful!</p>";
+                            } else if ($_GET['login'] === 'failed') {
+                                echo "<script>alert('Login failed. Please try again.');</script>";
+                            }
+                        }
+                    ?>
+                    <form class="login-form" method="POST" action="login.php">
                         <div class="form-group">
-                            <label class="login-label" for="username">Username:</label>
+                            <label class="login-label">Username:</label>
                             <br>
                             <input class="login-input" type="text" id="username" name="username" required>
                         </div>
                         <div class="form-group">
-                            <label class="login-label" for="password">Password:</label>
+                            <label class="login-label">Password:</label>
                             <br>
                             <input class="login-input" type="password" id="password" name="password" required>
                         </div>
-                        <button class="login-button" type="submit" name="submit-login" id="submit-login">Login</button>
+                        <button class="login-button" type="submit">Login</button>
                     </form>
                 </div>
 
                 <div class="contact-container">
                     <h2 class="contact-h2">Contact Me</h2>
-                    <form class="contact-form">
+                    <form class="contact-form" method="post" action="sendmail.php">
                         <div class="form-group">
                             <label class="contact-label" for="name">Name:</label>
                             <br>
