@@ -23,7 +23,5 @@
     // Send the email
     mail($to, $subject, $email_content, $headers);
 
-    // Redirect to a thank you page
-    header("Location: thank-you.html");
     exit();
 ?>
